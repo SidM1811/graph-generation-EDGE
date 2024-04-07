@@ -13,7 +13,7 @@ def max_degree(A):
     """
     Compute the maximum degree.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Maximum degree.
@@ -29,7 +29,7 @@ def min_degree(A):
     """
     Compute the minimum degree.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Minimum degree.
@@ -45,7 +45,7 @@ def average_degree(A):
     """
     Compute the average degree.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Average degree.
@@ -61,13 +61,13 @@ def LCC(A):
     """
     Compute the size of the largest connected component (LCC).
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Size of the largest connected component.
     """
     try:
-        G = nx.from_scipy_sparse_matrix(A)
+        G = nx.from_scipy_sparse_array(A)
         return max([len(c) for c in nx.connected_components(G)])
     except:
         return np.nan
@@ -77,7 +77,7 @@ def wedge_count(A):
     """
     Compute the wedge count.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Wedge count.
@@ -93,7 +93,7 @@ def claw_count(A):
     """
     Compute the claw count.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Claw count.
@@ -109,13 +109,13 @@ def triangle_count(A):
     """
     Compute the triangle count.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Triangle count.
     """
     try:
-        A_graph = nx.from_scipy_sparse_matrix(A)
+        A_graph = nx.from_scipy_sparse_array(A)
         triangles = nx.triangles(A_graph)
         t = np.sum(list(triangles.values())) / 3
         return int(t)
@@ -127,7 +127,7 @@ def square_count(A):
     """
     Compute the square count.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Square count.
@@ -147,7 +147,7 @@ def power_law_alpha(A):
     """
     Compute the power law coefficient of the degree distribution of the input graph.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Power law coefficient.
@@ -165,7 +165,7 @@ def gini(A):
     """
     Compute the Gini coefficient of the degree distribution of the input graph.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Gini coefficient.
@@ -185,7 +185,7 @@ def edge_distribution_entropy(A):
     """
     Compute the relative edge distribution entropy of the input graph.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Relative edge distribution entropy.
@@ -203,13 +203,13 @@ def assortativity(A):
     """
     Compute the assortativity of the input graph.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Assortativity.
     """
     try:
-        G = nx.from_scipy_sparse_matrix(A)
+        G = nx.from_scipy_sparse_array(A)
         return nx.degree_assortativity_coefficient(G)
     except:
         return np.nan
@@ -219,7 +219,7 @@ def clustering_coefficient(A):
     """
     Compute the clustering coefficient of the input graph.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Clustering coefficient.
@@ -234,7 +234,7 @@ def cpl(A):
     """
     Compute the characteristic path length of the input graph.
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
     
     Returns:
         Characteristic path length.
@@ -251,7 +251,7 @@ def compute_graph_statistics(A):
     Compute a selection of graph statistics for the input graph.
     
     Args:
-        A (sp.csr.csr_matrix): The input adjacency matrix.
+        A (sp.csr.csr_array): The input adjacency array.
           
     Returns:
         Dictionary containing the following statistics:
@@ -288,8 +288,8 @@ def edge_overlap(A, B):
     """
     Compute edge overlap between two graphs (amount of shared edges).
     Args:
-        A (sp.csr.csr_matrix): First input adjacency matrix.
-        B (sp.csr.csr_matrix): Second input adjacency matrix.
+        A (sp.csr.csr_array): First input adjacency array.
+        B (sp.csr.csr_array): Second input adjacency array.
     Returns:
         Edge overlap.
     """
